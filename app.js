@@ -10,6 +10,11 @@ function handleServerRequest(request, response) {
 
   var urlInfo = url.parse(request.url, true);
 
+  console.log('There are %d query parameters.', Object.keys(urlInfo.query).length);
+  for (q in urlInfo.query) {
+    console.log('Query paramter: ' + urlInfo.query[q]);
+  }
+
   // Log the value of bork and blag
   var bork = urlInfo.query.bork;
   console.log("1st Query info: ", bork);
