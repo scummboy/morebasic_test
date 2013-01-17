@@ -24,13 +24,17 @@ function handleServerRequest(request, response) {
 
   response.writeHead(200, {'Content-Type':'text/plain'});
   response.write('Hello World\n');
-  if (bork !== undefined) {
+  for (q in urlInfo.query) {
+    response.write(urlInfo.query[q]);
+    response.write('\n');
+  }
+/*  if (bork !== undefined) {
     response.write(bork);
     response.write('\n');
   }
   if (blag !== undefined) {
     response.write(blag);
-  }
+  }*/
   response.end('\n');
 }
 
