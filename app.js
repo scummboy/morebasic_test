@@ -6,22 +6,25 @@ function handleServerRequest(request, response) {
     return;
   }
 
-  console.log("Client hit %s, with the following: ", request.url, request.headers);
+  // console.log("Client hit %s, with the following: ", request.url, request.headers);
 
   var urlInfo = url.parse(request.url, true);
 
   // Log the value of bork and blag
-  console.log("1st Query info: ", urlInfo.query.bork);
-  console.log("2nd Query Info: ", urlInfo.query.blag);
+  var bork = urlInfo.query.bork;
+  console.log("1st Query info: ", bork);
+
+  var blag = urlInfo.query.blag;
+  console.log("2nd Query Info: ", blag);
 
   response.writeHead(200, {'Content-Type':'text/plain'});
   response.write('Hello World\n');
-  if (urlInfo.query.bork !== undefined) {
-    response.write(urlInfo.query.bork);
+  if (bork !== undefined) {
+    response.write(bork);
     response.write('\n');
   }
-  if (urlInfo.query.blag !== undefined) {
-    response.write(urlInfo.query.blag);
+  if (blag !== undefined) {
+    response.write(blag);
   }
   response.end('\n');
 }
