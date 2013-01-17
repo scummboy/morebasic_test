@@ -1,7 +1,12 @@
 var http = require('http'), url = require('url');
 
 function handleServerRequest(request, response) {
-  //console.log("Client hit %s, with the following: ", request.url, request.headers);
+  if (request.url.indexOf('favicon.ico') !== -1) {
+    response.end();
+    return;
+  }
+
+  console.log("Client hit %s, with the following: ", request.url, request.headers);
 
   var urlInfo = url.parse(request.url, true);
 
